@@ -40,6 +40,12 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Module" asp-action="Create">Add Module</a>
                             </li>
                         }
+                        @if (User.IsInRole("Student"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="Index">Courses</a> <!-- New Course Button -->
+                            </li>
+                        }
                     </ul>
 
                     <!-- User Authentication Links -->

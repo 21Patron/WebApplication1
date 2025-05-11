@@ -29,6 +29,7 @@ namespace WebApplication1.Controllers
 
         private static List<Course> courses = new List<Course>();
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             ViewBag.Faculties = faculties;

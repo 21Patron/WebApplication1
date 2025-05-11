@@ -18,7 +18,7 @@ namespace WebApplication1.Controllers
 
         public IActionResult Create()
         {
-            ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseName");
+            //ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseName");
             return View();
         }
 

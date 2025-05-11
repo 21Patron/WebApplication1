@@ -11,3 +11,104 @@
     <li><a href="/MyAssignments">Assignments</a></li>
     <li><a href="/Messages">Messages</a></li>
 </ul>
+
+<hr />
+
+<!-- Calendar Section -->
+<h2>Calendar</h2>
+<div id="calendar"></div>
+
+<!-- Modal for Adding Events -->
+<div id="eventModal" style="display: none;">
+    <h3>Add Event</h3>
+    <form id="eventForm">
+        <label for="eventTitle">Event Title:</label>
+        <input type="text" id="eventTitle" name="eventTitle" required />
+        <br />
+        <label for="eventDate">Event Date:</label>
+        <input type="date" id="eventDate" name="eventDate" required />
+        <br />
+        <button type="submit">Add Event</button>
+    </form>
+</div>
+
+<hr />
+
+<!-- Timeline Section -->
+<h2>Timeline</h2>
+<div id="timeline">
+    <ul id="timelineList">
+        <!-- Timeline items will be dynamically added here -->
+    </ul>
+</div>
+
+<hr />
+
+<!-- Recently Accessed Courses Section -->
+<h2>Recently Accessed Courses</h2>
+<div id="recentCourses">
+    <ul id="recentCoursesList">
+        <!-- Recently accessed courses will be dynamically added here -->
+    </ul>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.8/index.global.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize the calendar
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                selectable: true,
+                dateClick: function (info) {
+                    // Open Add Event Modal
+                    var modal = document.getElementById('eventModal');
+                    modal.style.display = 'block';
+                    document.getElementById('eventDate').value = info.dateStr;
+                },
+                events: [] // Array to populate calendar events dynamically
+            });
+            calendar.render();
+
+            // Add Event Form Submission
+            document.getElementById('eventForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                var title = document.getElementById('eventTitle').value;
+                var date = document.getElementById('eventDate').value;
+
+                if (title && date) {
+                    // Add event to calendar
+                    calendar.addEvent({
+                        title: title,
+                        start: date,
+                        allDay: true
+                    });
+
+                    // Add event to timeline
+                    var timelineList = document.getElementById('timelineList');
+                    var listItem = document.createElement('li');
+                    listItem.textContent = `${title} - ${date}`;
+                    timelineList.appendChild(listItem);
+
+                    // Close Modal
+                    document.getElementById('eventModal').style.display = 'none';
+                }
+            });
+
+            // Recently Accessed Courses Section (Sample Data)
+            var recentCourses = ['Mathematics I', 'Physics II', 'Computer Science Basics'];
+            var recentCoursesList = document.getElementById('recentCoursesList');
+            recentCourses.forEach(function (course) {
+                var listItem = document.createElement('li');
+                listItem.textContent = course;
+                recentCoursesList.appendChild(listItem);
+            });
+        });
+    </script>
+}

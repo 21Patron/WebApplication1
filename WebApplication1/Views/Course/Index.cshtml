@@ -5,8 +5,11 @@
 
 <h2>Courses</h2>
 
-<a asp-action="Create" class="btn btn-success">Create Course</a>
-<a asp-action="ManageCourse" class="btn btn-info">Manage Course</a>
+@if (User.IsInRole("Admin"))
+{
+    <a asp-action="Create" class="btn btn-success">Create Course</a>
+    <a asp-action="ManageCourse" class="btn btn-info">Manage Course</a>
+}
 
 @foreach (var faculty in ViewBag.Faculties as List<string>)
 {
