@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Areas.Identity.Data;
 using WebApplication1.Data;
+using WebApplication1.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

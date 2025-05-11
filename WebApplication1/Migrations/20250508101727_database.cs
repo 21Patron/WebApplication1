@@ -219,6 +219,7 @@ namespace WebApplication1.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
         }
     }
 }
