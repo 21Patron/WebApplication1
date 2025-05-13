@@ -1,8 +1,117 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="landing-banner text-white text-center py-5" style="background: url('/images/university-banner.jpg') no-repeat center center; background-size: cover;">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Welcome to the University Management System</h1>
+        <p class="lead">Empowering Learning, Innovation, and Leadership</p>
+    </div>
+</div>
+
+<div class="container my-5">
+    <!-- Quick Links -->
+    <div class="row text-center mb-4">
+        <div class="col">
+            <a class="btn btn-outline-primary mx-2" href="#">Student Services</a>
+            <a class="btn btn-outline-secondary mx-2" href="#">Library</a>
+            <a class="btn btn-outline-success mx-2" href="#">Research</a>
+            <a class="btn btn-outline-info mx-2" href="#">Staff</a>
+            <a class="btn btn-outline-warning mx-2" href="#">Alumni</a>
+            <a class="btn btn-outline-dark mx-2" href="#">Careers@UMS</a>
+        </div>
+    </div>
+
+    <!-- Intro Section -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">ACHIEVING GREATNESS TOGETHER</h2>
+        <p class="text-muted">
+            With over 25,000 students enrolled, our institution is a premier choice for higher education. Located in vibrant campuses across the region, we promote innovation, leadership, and transformation in academia.
+        </p>
+    </div>
+
+    <!-- Sections Grid -->
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <h5>Students</h5>
+            <p>Access your portal, manage your academics, register for courses, and more.</p>
+        </div>
+        <div class="col-md-3">
+            <h5>Research</h5>
+            <p>Explore ongoing research initiatives, support services, and postgraduate info.</p>
+        </div>
+        <div class="col-md-3">
+            <h5>Staff</h5>
+            <p>Login to manage content, modules, assessments, and internal communications.</p>
+        </div>
+        <div class="col-md-3">
+            <h5>Alumni</h5>
+            <p>Stay connected with your alma mater and explore new opportunities.</p>
+        </div>
+    </div>
+
+    <!-- Faculties Section -->
+    <div class="mb-5">
+        <h3 class="fw-bold mb-4">Faculties</h3>
+        <div class="row g-4">
+            <div class="col-md-4"><div class="p-3 border">Faculty of Accounting & Informatics</div></div>
+            <div class="col-md-4"><div class="p-3 border">Faculty of Applied Sciences</div></div>
+            <div class="col-md-4"><div class="p-3 border">Faculty of Arts and Design</div></div>
+            <div class="col-md-4"><div class="p-3 border">Faculty of Engineering & Built Environment</div></div>
+            <div class="col-md-4"><div class="p-3 border">Faculty of Health Sciences</div></div>
+            <div class="col-md-4"><div class="p-3 border">Faculty of Management Sciences</div></div>
+        </div>
+    </div>
+
+    <!-- News & Events -->
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <h4 class="fw-bold">Latest News</h4>
+            <ul class="list-unstyled">
+                <li class="mb-3">
+                    <strong>UMS awarded Research Excellence Grant</strong><br />
+                    Our faculty received national recognition for driving innovation in AI and sustainability.
+                </li>
+                <li class="mb-3">
+                    <strong>Spring Graduation Announced</strong><br />
+                    Celebrate the achievements of our graduates on 19th Sept at the Convention Centre.
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h4 class="fw-bold">Upcoming Events</h4>
+            <ul class="list-unstyled">
+                <li class="mb-3">
+                    <strong>Entrepreneurship Expo</strong><br />
+                    25 May – Explore start-up ideas by students & staff at our Innovation Hub.
+                </li>
+                <li class="mb-3">
+                    <strong>Faculty Induction Week</strong><br />
+                    Kicks off 1 June – A warm welcome to our first-year students.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Poll Section -->
+    <div class="mb-5">
+        <h4>What's your take on AI in Education?</h4>
+        <form>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="poll" id="poll1">
+                <label class="form-check-label" for="poll1">AI will revolutionize personalized learning</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="poll" id="poll2">
+                <label class="form-check-label" for="poll2">AI should be used cautiously in education</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="poll" id="poll3">
+                <label class="form-check-label" for="poll3">I’m not sure / no strong opinion</label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Vote</button>
+        </form>
+    </div>
+
 </div>
