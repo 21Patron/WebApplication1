@@ -21,7 +21,38 @@ namespace WebApplication1.Controllers
         // Create Quizzes & Assignments
         public IActionResult QuizAssignment()
         {
-            return View(); // Views/LecturerDashboard/QuizAssignment.cshtml
+            ViewBag.Faculties = new List<string>
+            {
+                "FACULTY OF ACCOUNTING & INFORMATICS",
+                "FACULTY OF APPLIED SCIENCES",
+                "FACULTY OF ARTS AND DESIGN",
+                "FACULTY OF ENGINEERING & THE BUILT ENVIRONMENT",
+                "FACULTY OF HEALTH SCIENCES",
+                "FACULTY OF MANAGEMENT SCIENCES"
+            };
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateQuiz(string faculty, string course, string module, string title, string description, DateTime deadline)
+        {
+            // Logic for storing the quiz/assignment details in the database
+            // Example:
+            // var quiz = new Quiz
+            // {
+            //     Faculty = faculty,
+            //     Course = course,
+            //     Module = module,
+            //     Title = title,
+            //     Description = description,
+            //     Deadline = deadline
+            // };
+            // _context.Quizzes.Add(quiz);
+            // _context.SaveChanges();
+
+            TempData["SuccessMessage"] = "Quiz/Assignment created successfully!";
+            return RedirectToAction(nameof(QuizAssignment));
         }
 
         // Set Up Online Classes

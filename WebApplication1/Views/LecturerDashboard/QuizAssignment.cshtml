@@ -2,34 +2,122 @@
     ViewData["Title"] = "Create Quizzes & Assignments";
 }
 
-<h2>Create Quizzes & Assignments</h2>
+<h2 class="mb-4 text-center">Create Quizzes & Assignments</h2>
 
-<form asp-action="CreateAssignment" method="post" enctype="multipart/form-data">
-    <div class="mb-3">
-        <label for="Course" class="form-label">Select Course</label>
-        <select class="form-select" id="Course" name="Course">
-            <option selected disabled>Choose course...</option>
-            <option>Introduction to Programming</option>
-            <option>Data Structures</option>
-            <option>Software Engineering</option>
+<p class="text-muted text-center mb-5">Easily create and schedule quizzes or assignments for your students.</p>
+
+<form asp-controller="LecturerDashboard" asp-action="CreateQuiz" method="post">
+    <div class="form-group mb-4">
+        <label for="faculty">Select Faculty</label>
+        <select class="form-control" id="faculty" name="faculty" onchange="loadCourses()">
+            <option value="">-- Select Faculty --</option>
+            @foreach (var faculty in ViewBag.Faculties)
+            {
+                <option value="@faculty">@faculty</option>
+            }
         </select>
     </div>
 
-    <div class="mb-3">
-        <label for="Title" class="form-label">Assignment/Quiz Title</label>
-        <input type="text" class="form-control" id="Title" name="Title" placeholder="e.g. Quiz 1: Variables" required />
+    <div class="form-group mb-4">
+        <label for="course">Select Course</label>
+        <select class="form-control" id="course" name="course" onchange="loadModules()">
+            <option value="">-- Select Course --</option>
+        </select>
     </div>
 
-    <div class="mb-3">
-        <label for="DueDate" class="form-label">Due Date</label>
-        <input type="date" class="form-control" id="DueDate" name="DueDate" required />
+    <div class="form-group mb-4">
+        <label for="module">Select Module</label>
+        <select class="form-control" id="module" name="module">
+            <option value="">-- Select Module --</option>
+        </select>
     </div>
 
-    <div class="mb-3">
-        <label for="File" class="form-label">Upload Quiz/Assignment File</label>
-        <input type="file" class="form-control" id="File" name="File" />
+    <div class="form-group mb-4">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Enter quiz or assignment title">
     </div>
 
-    <button type="submit" class="btn btn-primary">Create</button>
-    <a asp-controller="LecturerDashboard" asp-action="Index" class="btn btn-secondary ms-2">Back to Dashboard</a>
+    <div class="form-group mb-4">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Add a brief description"></textarea>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="deadline">Deadline</label>
+        <input type="datetime-local" class="form-control" id="deadline" name="deadline">
+    </div>
+
+    <button type="submit" class="btn btn-secondary btn-lg">Create</button>
 </form>
+
+<script>
+    // Full data for faculties, courses, and modules
+    const data = {
+        "FACULTY OF ACCOUNTING & INFORMATICS": {
+            "Accounting": ["Financial Accounting", "Managerial Accounting", "Taxation"],
+            "Informatics": ["Computer Science", "Information Systems", "Data Analytics"]
+        },
+        "FACULTY OF APPLIED SCIENCES": {
+            "Biology": ["Genetics", "Microbiology", "Biochemistry"],
+            "Physics": ["Quantum Mechanics", "Thermodynamics", "Optics"],
+            "Chemistry": ["Organic Chemistry", "Analytical Chemistry", "Physical Chemistry"]
+        },
+        "FACULTY OF ARTS AND DESIGN": {
+            "Fine Arts": ["Painting", "Sculpture", "Photography"],
+            "Graphic Design": ["Typography", "Digital Media", "Advertising Design"],
+            "Performing Arts": ["Drama", "Music", "Dance"]
+        },
+        "FACULTY OF ENGINEERING & THE BUILT ENVIRONMENT": {
+            "Civil Engineering": ["Structural Analysis", "Hydraulics", "Geotechnical Engineering"],
+            "Mechanical Engineering": ["Thermodynamics", "Machine Design", "Fluid Mechanics"],
+            "Electrical Engineering": ["Circuit Analysis", "Power Systems", "Control Systems"]
+        },
+        "FACULTY OF HEALTH SCIENCES": {
+            "Nursing": ["Medical-Surgical Nursing", "Pediatric Nursing", "Psychiatric Nursing"],
+            "Pharmacy": ["Pharmacology", "Medicinal Chemistry", "Pharmacy Practice"],
+            "Public Health": ["Epidemiology", "Health Promotion", "Environmental Health"]
+        },
+        "FACULTY OF MANAGEMENT SCIENCES": {
+            "Business Management": ["Human Resource Management", "Operations Management", "Strategic Management"],
+            "Marketing": ["Consumer Behavior", "Digital Marketing", "Market Research"],
+            "Finance": ["Corporate Finance", "Investment Analysis", "Risk Management"]
+        }
+    };
+
+    // Function to load courses based on selected faculty
+    function loadCourses() {
+        const faculty = document.getElementById("faculty").value;
+        const courseDropdown = document.getElementById("course");
+        const moduleDropdown = document.getElementById("module");
+
+        courseDropdown.innerHTML = '<option value="">-- Select Course --</option>';
+        moduleDropdown.innerHTML = '<option value="">-- Select Module --</option>';
+
+        if (data[faculty]) {
+            Object.keys(data[faculty]).forEach(course => {
+                const option = document.createElement("option");
+                option.value = course;
+                option.textContent = course;
+                courseDropdown.appendChild(option);
+            });
+        }
+    }
+
+    // Function to load modules based on selected course
+    function loadModules() {
+        const faculty = document.getElementById("faculty").value;
+        const course = document.getElementById("course").value;
+        const moduleDropdown = document.getElementById("module");
+
+        moduleDropdown.innerHTML = '<option value="">-- Select Module --</option>';
+
+        if (data[faculty] && data[faculty][course]) {
+            data[faculty][course].forEach(module => {
+                const option = document.createElement("option");
+                option.value = module;
+                option.textContent = module;
+                moduleDropdown.appendChild(option);
+            });
+        }
+    }
+</script>
