@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Upload Study Content";
+}
+
+<h2>Upload Study Content</h2>
+
+<form asp-action="UploadContent" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="Course" class="form-label">Select Course</label>
+        <select class="form-select" id="Course" name="Course">
+            <option selected disabled>Choose course...</option>
+            <option>Introduction to Programming</option>
+            <option>Data Structures</option>
+            <option>Software Engineering</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="Title" class="form-label">Content Title</label>
+        <input type="text" class="form-control" id="Title" name="Title" placeholder="e.g. Week 3 Lecture Slides" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="File" class="form-label">Upload File</label>
+        <input type="file" class="form-control" id="File" name="File" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Upload</button>
+    <a asp-controller="LecturerDashboard" asp-action="Index" class="btn btn-secondary ms-2">Back to Dashboard</a>
+</form>

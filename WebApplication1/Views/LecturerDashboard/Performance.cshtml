@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Track Student Performance";
+}
+
+<h2>Track Student Performance</h2>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Student Name</th>
+            <th>Course</th>
+            <th>Grade</th>
+            <th>Participation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Alice Johnson</td>
+            <td>Data Structures</td>
+            <td>85%</td>
+            <td>High</td>
+        </tr>
+        <tr>
+            <td>Bob Smith</td>
+            <td>Software Engineering</td>
+            <td>72%</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>Carol Lee</td>
+            <td>Intro to Programming</td>
+            <td>91%</td>
+            <td>High</td>
+        </tr>
+        <!-- Example rows; dynamic rendering should replace this -->
+    </tbody>
+</table>
+
+<a asp-controller="LecturerDashboard" asp-action="Index" class="btn btn-secondary">Back to Dashboard</a>

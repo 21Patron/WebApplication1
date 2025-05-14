@@ -2,12 +2,48 @@
     ViewData["Title"] = "Lecturer Dashboard";
 }
 
-<h1>Lecturer Dashboard</h1>
+<h2 class="mb-4">Lecturer Dashboard</h2>
 
-<p>Welcome, Lecturer! You can manage courses, assignments, and student assessments.</p>
+<div class="row row-cols-1 row-cols-md-2 g-4">
 
-<ul>
-    <li><a href="/Courses">My Courses</a></li>
-    <li><a href="/Assignments">Assignments</a></li>
-    <li><a href="/StudentGrades">Student Grades</a></li>
-</ul>
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Upload Study Content</h5>
+                <p class="card-text">Upload lecture notes, presentations, and other study materials.</p>
+                <a asp-controller="LecturerDashboard" asp-action="ContentUpload" class="btn btn-primary">ContentUpload</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Create Quizzes & Assignments</h5>
+                <p class="card-text">Design and publish quizzes and assignments with deadlines.</p>
+                <a asp-controller="LecturerDashboard" asp-action="QuizAssignment" class="btn btn-secondary">QuizAssignment</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Set Up Online Classes</h5>
+                <p class="card-text">Schedule and manage live or recorded online classes.</p>
+                <a asp-controller="LecturerDashboard" asp-action="OnlineClass" class="btn btn-success">OnlineClass</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Track Student Performance</h5>
+                <p class="card-text">View students' grades, participation, and progress reports.</p>
+                <a asp-controller="LecturerDashboard" asp-action="Performance" class="btn btn-info">Performance</a>
+            </div>
+        </div>
+    </div>
+
+</div>

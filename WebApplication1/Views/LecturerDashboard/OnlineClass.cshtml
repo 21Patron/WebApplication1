@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Set Up Online Classes";
+}
+
+<h2>Set Up Online Classes</h2>
+
+<form asp-action="ScheduleClass" method="post">
+    <div class="mb-3">
+        <label for="Course" class="form-label">Select Course</label>
+        <select class="form-select" id="Course" name="Course">
+            <option selected disabled>Choose course...</option>
+            <option>Introduction to Programming</option>
+            <option>Data Structures</option>
+            <option>Software Engineering</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="ClassTitle" class="form-label">Class Title</label>
+        <input type="text" class="form-control" id="ClassTitle" name="ClassTitle" placeholder="e.g. Live Session: Arrays" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="DateTime" class="form-label">Scheduled Date & Time</label>
+        <input type="datetime-local" class="form-control" id="DateTime" name="DateTime" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="MeetingLink" class="form-label">Meeting Link or Video URL</label>
+        <input type="url" class="form-control" id="MeetingLink" name="MeetingLink" placeholder="e.g. https://zoom.us/..." required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Schedule</button>
+    <a asp-controller="LecturerDashboard" asp-action="Index" class="btn btn-secondary ms-2">Back to Dashboard</a>
+</form>

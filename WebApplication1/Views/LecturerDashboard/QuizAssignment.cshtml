@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Create Quizzes & Assignments";
+}
+
+<h2>Create Quizzes & Assignments</h2>
+
+<form asp-action="CreateAssignment" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="Course" class="form-label">Select Course</label>
+        <select class="form-select" id="Course" name="Course">
+            <option selected disabled>Choose course...</option>
+            <option>Introduction to Programming</option>
+            <option>Data Structures</option>
+            <option>Software Engineering</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="Title" class="form-label">Assignment/Quiz Title</label>
+        <input type="text" class="form-control" id="Title" name="Title" placeholder="e.g. Quiz 1: Variables" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="DueDate" class="form-label">Due Date</label>
+        <input type="date" class="form-control" id="DueDate" name="DueDate" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="File" class="form-label">Upload Quiz/Assignment File</label>
+        <input type="file" class="form-control" id="File" name="File" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-controller="LecturerDashboard" asp-action="Index" class="btn btn-secondary ms-2">Back to Dashboard</a>
+</form>
