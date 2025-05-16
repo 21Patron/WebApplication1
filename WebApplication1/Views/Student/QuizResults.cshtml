@@ -135,12 +135,6 @@
                                             <div class="text-2xl font-semibold text-gray-900">
                                                 @stats["CorrectAnswers"] / @stats["AnsweredQuestions"]
                                             </div>
-                                            @if ((int)stats["PendingReview"] > 0)
-                                            {
-                                                <div class="ml-2 flex items-baseline text-sm font-semibold text-yellow-600">
-                                                    (@stats["PendingReview"] pending)
-                                                </div>
-                                            }
                                         </dd>
                                     </dl>
                                 </div>

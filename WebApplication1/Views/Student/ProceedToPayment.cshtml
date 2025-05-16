@@ -19,7 +19,9 @@
                     </div>
                     <div>
                         <dt class="text-sm font-medium text-gray-500">Application Fee</dt>
-                        <dd class="mt-1 text-sm text-gray-900">$@Model.ApplicationFee.ToString("F2")</dd>
+                        <dd class="mt-1 text-sm text-gray-900">
+                            @Model.ApplicationFee.ToString("C", new System.Globalization.CultureInfo("en-ZA"))
+                        </dd>
                     </div>
                 </dl>
             </div>
@@ -47,7 +49,7 @@
 
                     <div class="mt-4">
                         <button id="submit-button" type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                            Pay $@Model.ApplicationFee.ToString("F2")
+                            Pay @Model.ApplicationFee.ToString("C", new System.Globalization.CultureInfo("en-ZA"))
                         </button>
                     </div>
                 </form>
